@@ -1,96 +1,79 @@
 # dsh-db-studio
 
-A database studio for [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) (DSH):
+[![test](https://github.com/etShaw-zh/dsh-db-studio/actions/workflows/test.yml/badge.svg)](https://github.com/etShaw-zh/dsh-db-studio/actions/workflows/test.yml)
+[![License](https://img.shields.io/github/license/etShaw-zh/dsh-db-studio)](LICENSE)
 
-- **Sidebar entry** — a “Database” icon next to Plugins / Automation opens a global database panel.
-- **Connects to databases** — SQLite (built in), PostgreSQL, MySQL.
-- **Browse and query** — connections, tables/views, columns, paginated rows, and a SQL console.
-- **Works in chat** — four model-facing tools let the assistant inspect and modify data in the conversation.
+Connect to databases in [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) (DSH), then query and edit data right in the conversation.
+
+![Database panel](docs/panel.png)
+
+## Features
+
+- **Database panel in the sidebar** — browse connections, schemas and paginated rows, and run SQL.
+- **Database tab in a conversation** — inspect and work with the selected databases without leaving the chat.
+- **Multi-select picker in the composer** — choose which databases this conversation may use.
+- **Compact status pill** — shows the selected databases and their connection state without taking over the composer.
+- **SQLite / PostgreSQL / MySQL**, with SQLite requiring no extra driver.
+- **Four agent tools** for querying, creating tables and writing data from chat.
+
+![Database tab](docs/conversation.png)
 
 ## Install
 
-From GitHub:
-
 ```bash
+# macOS desktop
 DSH_CLI="/Applications/DeepSeek Harness.app/Contents/Resources/runtime/cli/bin/dsh"
 "$DSH_CLI" plugin --profile desktop add github:etShaw-zh/dsh-db-studio
 ```
 
-Or from a checkout:
+Restart DeepSeek Harness afterwards. On Windows / Linux use the `dsh` path installed on your machine.
+
+From source:
 
 ```bash
 git clone https://github.com/etShaw-zh/dsh-db-studio.git
-cd dsh-db-studio
-npm install
-"$DSH_CLI" plugin --profile desktop add "$PWD"
+"$DSH_CLI" plugin --profile desktop add "$PWD/dsh-db-studio"
 ```
 
-Restart DeepSeek Harness afterwards: the host half is a Cordis plugin, so a page refresh is not enough.
+## Getting started
 
-## What you get
+1. Open **Database** in the sidebar and create a connection, or use the built-in demo database.
+2. Select the databases for the conversation, then ask the assistant to work with them:
 
-The first launch creates a demo SQLite database (`users`, `products`, `orders`) under
-`$DSH_HOME/dsh-db-studio/demo.db`, so the panel has something to show before any setup.
-
-Connections support SQLite files, PostgreSQL and MySQL servers. Passwords never reach the
-browser or the model — the panel only sees `hasPassword`.
-
-The tools are:
-
-| Tool | Purpose |
-| --- | --- |
-| `db_list_connections` | List configured connections (secrets removed) |
-| `db_describe_schema` | List tables/views, or describe one table's columns and row count |
-| `db_query` | Run one read-only statement (SELECT / WITH / EXPLAIN / SHOW / PRAGMA) |
-| `db_execute` | Run one write statement; requires `confirm: true` and is refused on read-only connections or when `allowWrite` is off |
-
-Example prompts:
-
-> Show me the 10 most recent orders in the demo database, highest total first.
+> Show me the 10 most recent orders in the demo database, sorted by amount.
 >
-> Create a `notes` table with id, title, body and created_at.
+> Change every Hangzhou user's city to “Hangzhou · West Lake”.
+>
+> Add a notes field to the orders table.
 
-
-### In the conversation
-
-- A **Database** view tab sits between Chat and Trajectory and shows the databases selected for the current conversation (tables, schema, rows, SQL).
-- A **multi-select database picker** sits beside the workspace/permission controls in the composer. Selections are per conversation and are shared by the tab, the picker and the status strip.
-- A **connection status pill** under the composer shows a single database's name/engine/table count, or a compact `3 databases · connected` summary for multiple selections. Click it for per-connection status, table counts and latency; it never widens or wraps the composer dock.
-- The first time a conversation opens, it defaults to the connections recently used in that workspace; if there are none, all configured connections.
-- Tool calls are **strictly scoped** to the conversation's selection: with nothing selected, `db_query`/`db_execute`/`db_describe_schema` refuse and ask the user to pick databases; an unselected `connectionId` is rejected.
+The assistant can only access databases selected for the conversation; if none are selected, it asks you to choose one first.
 
 ## Configuration
 
-```yaml
-- insert:
-    - id: db-studio
-      name: dsh-db-studio
-      config:
-        demo: true          # seed the demo database when there are no connections
-        allowWrite: true    # allow db_execute and write SQL in the panel
-        agentTools: true    # register the four model tools
-        maxRows: 200        # row cap for queries and table pages
-        # dshHome: /path/to/.dsh
-```
+Set these in the profile's `cordis.patch.yml`:
 
-## Security notes
+| Key | Default | Meaning |
+| --- | --- | --- |
+| `demo` | `true` | Create a demo database when there are no connections |
+| `allowWrite` | `true` | Allow write operations |
+| `agentTools` | `true` | Register the conversation tools |
+| `maxRows` | `200` | Maximum rows returned by a query |
 
-- Connections live in `$DSH_HOME/dsh-db-studio/connections.json` with directory `0700` and file `0600`.
-- Passwords are stored in that local file so the client can reconnect without prompting.
-  Prefer read-only database accounts plus the panel's “read-only connection” switch, or set
-  `allowWrite: false` for production databases.
-- The plugin makes no outbound requests of its own and reports nothing.
+## Data and security
 
-## Develop
+- Connections live in `~/.dsh/dsh-db-studio/connections.json` with file mode `0600`.
+- Passwords stay on this machine and never reach the browser or the model context.
+- For production databases, use a read-only account or connection, or set `allowWrite: false`.
+
+## Development
 
 ```bash
 npm install
-node --test test/*.test.js
+npm test
 ```
 
-See [README.md](README.md) (Chinese) for the full feature and architecture notes.
+Issues and PRs are welcome: <https://github.com/etShaw-zh/dsh-db-studio>
 
-## Links
+## License
 
-- GitHub: <https://github.com/etShaw-zh/dsh-db-studio>
-- Issues: <https://github.com/etShaw-zh/dsh-db-studio/issues>
+MIT
