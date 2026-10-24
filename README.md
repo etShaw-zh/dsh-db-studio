@@ -1,22 +1,24 @@
 # dsh-db-studio
 
+简体中文 ｜ [English](./README.en.md)
+
 [![test](https://github.com/etShaw-zh/dsh-db-studio/actions/workflows/test.yml/badge.svg)](https://github.com/etShaw-zh/dsh-db-studio/actions/workflows/test.yml)
 [![License](https://img.shields.io/github/license/etShaw-zh/dsh-db-studio)](LICENSE)
 
 在 [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness)（DSH）里连接数据库，直接在对话中查数据、改数据。
 
-![数据库面板](docs/panel.png)
+![对话内数据库](docs/conversation.png)
 
 ## 能做什么
 
+### 浏览和管理数据库
 - **左侧栏「数据库」面板**：浏览连接、表结构、分页数据，执行 SQL。
-- **对话内「数据库」tab**：在当前对话里直接查看和操作已选数据库。
-- **输入框旁多选下拉**：选择本次对话要使用的数据库，支持多选。
-- **底部连接状态**：紧凑显示当前选中的数据库及连接状态，不占用输入区。
 - **支持 SQLite / PostgreSQL / MySQL**，SQLite 无需额外安装驱动。
-- **对话中直接操作**：内置 4 个助手工具，可以帮你查询、建表、写数据。
 
-![对话内数据库](docs/conversation.png)
+### 在对话里直接用
+- **对话内「数据库」标签**：在当前对话里直接查看和操作已选数据库。
+- **输入框旁多选下拉**：选择本次对话要使用的数据库，支持多选。
+- **对话中直接操作**：内置 4 个助手工具，可以帮你查询、建表、写数据。
 
 ## 安装
 

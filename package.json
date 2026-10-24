@@ -1,7 +1,7 @@
 {
   "name": "dsh-db-studio",
   "version": "0.2.0",
-  "description": "DSH 数据库工作台：左侧栏入口 + 对话数据库 tab / 多选 / 状态条，支持 SQLite、PostgreSQL、MySQL",
+  "description": "Connect to databases in DeepSeek Harness (DSH), then query and edit data right in the conversation.",
   "type": "module",
   "license": "MIT",
   "keywords": [

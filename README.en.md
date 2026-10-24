@@ -1,22 +1,26 @@
 # dsh-db-studio
 
+English ｜ [简体中文](./README.md)
+
 [![test](https://github.com/etShaw-zh/dsh-db-studio/actions/workflows/test.yml/badge.svg)](https://github.com/etShaw-zh/dsh-db-studio/actions/workflows/test.yml)
 [![License](https://img.shields.io/github/license/etShaw-zh/dsh-db-studio)](LICENSE)
 
 Connect to databases in [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) (DSH), then query and edit data right in the conversation.
 
-![Database panel](docs/panel.png)
+![Database tab in a conversation](docs/conversation.png)
 
-## Features
+## What it does
 
-- **Database panel in the sidebar** — browse connections, schemas and paginated rows, and run SQL.
-- **Database tab in a conversation** — inspect and work with the selected databases without leaving the chat.
-- **Multi-select picker in the composer** — choose which databases this conversation may use.
-- **Compact status pill** — shows the selected databases and their connection state without taking over the composer.
+### Browse and manage databases
+
+- **Database panel in the sidebar**: browse connections, schemas and paginated data, and run SQL.
 - **SQLite / PostgreSQL / MySQL**, with SQLite requiring no extra driver.
-- **Four agent tools** for querying, creating tables and writing data from chat.
 
-![Database tab](docs/conversation.png)
+### Work in the conversation
+
+- **Database tab in a conversation**: view and work with the selected databases without leaving the chat.
+- **Multi-select picker in the composer**: choose the databases this conversation may use.
+- **Talk to the data**: four agent tools for querying, creating tables and writing data.
 
 ## Install
 
