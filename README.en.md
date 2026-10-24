@@ -7,7 +7,7 @@ English ｜ [简体中文](./README.md)
 
 Connect to databases in [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) (DSH), then query and edit data right in the conversation.
 
-![Database tab in a conversation](docs/conversation.png)
+![Querying the demo database in a conversation](docs/demo.gif)
 
 ## What it does
 

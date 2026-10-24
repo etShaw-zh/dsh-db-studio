@@ -7,7 +7,7 @@
 
 在 [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness)（DSH）里连接数据库，直接在对话中查数据、改数据。
 
-![对话内数据库](docs/conversation.png)
+![在对话中查询示例数据库](docs/demo.gif)
 
 ## 能做什么
 
