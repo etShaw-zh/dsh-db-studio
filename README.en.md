@@ -5,6 +5,7 @@ English ｜ [简体中文](./README.md)
 [![test](https://github.com/etShaw-zh/dsh-db-studio/actions/workflows/test.yml/badge.svg)](https://github.com/etShaw-zh/dsh-db-studio/actions/workflows/test.yml)
 [![License](https://img.shields.io/github/license/etShaw-zh/dsh-db-studio)](LICENSE)
 [![release](https://img.shields.io/github/v/release/etShaw-zh/dsh-db-studio)](https://github.com/etShaw-zh/dsh-db-studio/releases)
+[![npm](https://img.shields.io/npm/v/dsh-db-studio)](https://www.npmjs.com/package/dsh-db-studio)
 
 Connect to databases in [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) (DSH), then query and edit data right in the conversation.
 
@@ -25,9 +26,17 @@ Connect to databases in [DeepSeek Harness](https://github.com/deepseek-ai/deepse
 
 ## Install
 
+From npm:
+
 ```bash
 # macOS desktop
 DSH_CLI="/Applications/DeepSeek Harness.app/Contents/Resources/runtime/cli/bin/dsh"
+"$DSH_CLI" plugin --profile desktop add dsh-db-studio@1.0.1
+```
+
+Or install directly from GitHub:
+
+```bash
 "$DSH_CLI" plugin --profile desktop add github:etShaw-zh/dsh-db-studio
 ```
 

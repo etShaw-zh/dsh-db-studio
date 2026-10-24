@@ -5,6 +5,7 @@
 [![test](https://github.com/etShaw-zh/dsh-db-studio/actions/workflows/test.yml/badge.svg)](https://github.com/etShaw-zh/dsh-db-studio/actions/workflows/test.yml)
 [![License](https://img.shields.io/github/license/etShaw-zh/dsh-db-studio)](LICENSE)
 [![release](https://img.shields.io/github/v/release/etShaw-zh/dsh-db-studio)](https://github.com/etShaw-zh/dsh-db-studio/releases)
+[![npm](https://img.shields.io/npm/v/dsh-db-studio)](https://www.npmjs.com/package/dsh-db-studio)
 
 在 [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness)（DSH）里连接数据库，直接在对话中查数据、改数据。
 
@@ -23,9 +24,17 @@
 
 ## 安装
 
+从 npm 安装：
+
 ```bash
 # macOS 桌面端
 DSH_CLI="/Applications/DeepSeek Harness.app/Contents/Resources/runtime/cli/bin/dsh"
+"$DSH_CLI" plugin --profile desktop add dsh-db-studio@1.0.1
+```
+
+也可以直接从 GitHub 安装：
+
+```bash
 "$DSH_CLI" plugin --profile desktop add github:etShaw-zh/dsh-db-studio
 ```
 
