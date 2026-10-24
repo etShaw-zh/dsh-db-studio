@@ -1,0 +1,69 @@
+{
+  "name": "dsh-db-studio",
+  "version": "0.2.0",
+  "description": "DSH 数据库工作台：左侧栏入口 + 对话数据库 tab / 多选 / 状态条，支持 SQLite、PostgreSQL、MySQL",
+  "type": "module",
+  "license": "MIT",
+  "keywords": [
+    "dsh",
+    "deepseek-harness",
+    "dsh-plugin",
+    "database",
+    "sqlite",
+    "postgresql",
+    "mysql",
+    "conversation",
+    "ai-agent"
+  ],
+  "main": "./lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./client": "./lib/client.js",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib",
+    "docs",
+    "cordis.patch.yml",
+    "README.md",
+    "README.en.md"
+  ],
+  "engines": {
+    "node": ">=22.13",
+    "dsh": ">=0.2.1-rc.3"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "inject": [
+        "@deepseek-ai/dsh-client-locale",
+        "@deepseek-ai/dsh-client-ui-layout",
+        "@deepseek-ai/dsh-client-ui-sidebar"
+      ]
+    }
+  },
+  "dependencies": {
+    "mysql2": "^3.24.6",
+    "pg": "^8.23.1"
+  },
+  "scripts": {
+    "test": "node --test test/*.test.js",
+    "check": "node --check lib/index.js && node --check lib/service.js && node --check lib/drivers.js && node --check lib/store.js && node --check lib/home.js && node --check lib/client.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/etShaw-zh/dsh-db-studio.git"
+  },
+  "author": "Jianjun Xiao <et_shaw@126.com>",
+  "homepage": "https://github.com/etShaw-zh/dsh-db-studio#readme",
+  "bugs": {
+    "url": "https://github.com/etShaw-zh/dsh-db-studio/issues"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  }
+}

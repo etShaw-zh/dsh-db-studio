@@ -1,0 +1,11 @@
+# dsh-db-studio bundle patch.
+#
+# `dsh plugin --profile <name> add dsh-db-studio` reads this file and appends the
+# row below to the profile's bundle stack. The `name` is the npm package name,
+# so Node module resolution finds the installed package.
+- insert:
+    - id: db-studio
+      name: dsh-db-studio
+      config:
+        demo: true
+        allowWrite: true
