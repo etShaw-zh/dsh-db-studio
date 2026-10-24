@@ -4,6 +4,7 @@
 
 [![test](https://github.com/etShaw-zh/dsh-db-studio/actions/workflows/test.yml/badge.svg)](https://github.com/etShaw-zh/dsh-db-studio/actions/workflows/test.yml)
 [![License](https://img.shields.io/github/license/etShaw-zh/dsh-db-studio)](LICENSE)
+[![release](https://img.shields.io/github/v/release/etShaw-zh/dsh-db-studio)](https://github.com/etShaw-zh/dsh-db-studio/releases)
 
 在 [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness)（DSH）里连接数据库，直接在对话中查数据、改数据。
 
@@ -28,7 +29,7 @@ DSH_CLI="/Applications/DeepSeek Harness.app/Contents/Resources/runtime/cli/bin/d
 "$DSH_CLI" plugin --profile desktop add github:etShaw-zh/dsh-db-studio
 ```
 
-安装后**重启 DeepSeek Harness**。Windows / Linux 使用本机对应的 `dsh` 路径即可。
+安装后**重启 DeepSeek Harness**。稳定版见 [Releases](https://github.com/etShaw-zh/dsh-db-studio/releases)。Windows / Linux 使用本机对应的 `dsh` 路径即可。
 
 从源码安装：
 

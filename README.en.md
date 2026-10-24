@@ -4,6 +4,7 @@ English ｜ [简体中文](./README.md)
 
 [![test](https://github.com/etShaw-zh/dsh-db-studio/actions/workflows/test.yml/badge.svg)](https://github.com/etShaw-zh/dsh-db-studio/actions/workflows/test.yml)
 [![License](https://img.shields.io/github/license/etShaw-zh/dsh-db-studio)](LICENSE)
+[![release](https://img.shields.io/github/v/release/etShaw-zh/dsh-db-studio)](https://github.com/etShaw-zh/dsh-db-studio/releases)
 
 Connect to databases in [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) (DSH), then query and edit data right in the conversation.
 
@@ -30,7 +31,7 @@ DSH_CLI="/Applications/DeepSeek Harness.app/Contents/Resources/runtime/cli/bin/d
 "$DSH_CLI" plugin --profile desktop add github:etShaw-zh/dsh-db-studio
 ```
 
-Restart DeepSeek Harness afterwards. On Windows / Linux use the `dsh` path installed on your machine.
+Restart DeepSeek Harness afterwards. Stable builds are listed in [Releases](https://github.com/etShaw-zh/dsh-db-studio/releases). On Windows / Linux use the `dsh` path installed on your machine.
 
 From source:
 
