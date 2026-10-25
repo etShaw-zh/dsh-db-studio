@@ -126,6 +126,26 @@ test('per-session selection defaults, strict scope and status', async () => {
       /not selected/,
     )
 
+    // Successful and failed SQL runs are recorded per Session; history is
+    // newest-first and reproduce data (SQL + connection) survives the run.
+    const history = await studio.sqlHistory('session-scoped')
+    assert.equal(history.entries.length, 1)
+    assert.equal(history.entries[0].sql, 'SELECT COUNT(*) AS n FROM users')
+    assert.equal(history.entries[0].connectionId, demo.id)
+    assert.equal(history.entries[0].ok, true)
+    assert.equal(history.entries[0].source, 'ui')
+    await assert.rejects(
+      () => studio.query(demo.id, 'DELETE FROM users', { sessionId: 'session-scoped', cwd: '/workspace/a' }),
+      /read-only/,
+    )
+    const failedHistory = await studio.sqlHistory('session-scoped')
+    assert.equal(failedHistory.entries.length, 2)
+    assert.equal(failedHistory.entries[0].ok, false)
+    assert.match(failedHistory.entries[0].error, /read-only/)
+    const cleared = await studio.clearSqlHistory('session-scoped')
+    assert.equal(cleared.cleared, true)
+    assert.equal((await studio.sqlHistory('session-scoped')).entries.length, 0)
+
     // Empty selection is explicit and refuses every connection.
     await studio.setSessionSelection('session-empty', [], '/workspace/a')
     await assert.rejects(() => studio.schema(demo.id, undefined, { sessionId: 'session-empty', cwd: '/workspace/a' }), /no database is selected/)
