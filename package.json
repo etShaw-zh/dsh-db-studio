@@ -1,6 +1,6 @@
 {
   "name": "dsh-db-studio",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Connect to databases in DeepSeek Harness (DSH), then query and edit data right in the conversation.",
   "type": "module",
   "license": "MIT",

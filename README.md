@@ -31,7 +31,7 @@
 ```bash
 # macOS 桌面端
 DSH_CLI="/Applications/DeepSeek Harness.app/Contents/Resources/runtime/cli/bin/dsh"
-"$DSH_CLI" plugin --profile desktop add dsh-db-studio@1.0.2
+"$DSH_CLI" plugin --profile desktop add dsh-db-studio@1.0.3
 ```
 
 也可以直接从 GitHub 安装：
