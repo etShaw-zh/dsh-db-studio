@@ -24,7 +24,7 @@ Connect to databases in [DeepSeek Harness](https://github.com/deepseek-ai/deepse
 - **Multi-select picker in the composer**: choose the databases this conversation may use.
 - **Talk to the data**: four agent tools for querying, creating tables and writing data.
 - **`/db` command**: type `/`, pick **Database** from the command list, and open the database panel.
-- **Query history**: a **Query history** tab in the conversation database panel records SQL, connection, timing and affected rows; click an entry to load it back into the SQL editor.
+- **Query history**: a **Query history** tab in the conversation database panel records SQL, connection, timing and affected rows; click an entry to load it back into the SQL editor. The global database panel groups the same history by conversation, and clicking a group opens that conversation.
 
 ## Install
 

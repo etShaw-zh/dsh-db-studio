@@ -142,6 +142,14 @@ test('per-session selection defaults, strict scope and status', async () => {
     assert.equal(failedHistory.entries.length, 2)
     assert.equal(failedHistory.entries[0].ok, false)
     assert.match(failedHistory.entries[0].error, /read-only/)
+
+    // The global panel groups the same records by conversation.
+    const all = await studio.allSqlHistory()
+    assert.equal(all.sessions.length, 1)
+    assert.equal(all.sessions[0].sessionId, 'session-scoped')
+    assert.equal(all.sessions[0].entries.length, 2)
+    assert.equal(all.sessions[0].cwd, '/workspace/a')
+
     const cleared = await studio.clearSqlHistory('session-scoped')
     assert.equal(cleared.cleared, true)
     assert.equal((await studio.sqlHistory('session-scoped')).entries.length, 0)
