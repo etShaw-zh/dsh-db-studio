@@ -32,7 +32,7 @@ From npm:
 ```bash
 # macOS desktop
 DSH_CLI="/Applications/DeepSeek Harness.app/Contents/Resources/runtime/cli/bin/dsh"
-"$DSH_CLI" plugin --profile desktop add dsh-db-studio@1.0.1
+"$DSH_CLI" plugin --profile desktop add dsh-db-studio@1.0.2
 ```
 
 Or install directly from GitHub:
