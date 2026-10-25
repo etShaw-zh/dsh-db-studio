@@ -53,11 +53,23 @@ test('client bundle registers a sidebar entry and a main panel', async () => {
   assert.ok(client.inject.includes('locale'))
 
   const registrations = []
+  const commandRegistrations = []
   const cleanups = []
   const ctx = {
     effect(fn) {
       const cleanup = fn()
       if (typeof cleanup === 'function') cleanups.push(cleanup)
+    },
+    get(name) {
+      if (name === 'commandUi') {
+        return {
+          register(contribution) {
+            commandRegistrations.push(contribution)
+            return () => {}
+          },
+        }
+      }
+      return undefined
     },
     locale: {
       register() { return () => {} },
@@ -89,6 +101,11 @@ test('client bundle registers a sidebar entry and a main panel', async () => {
   assert.ok(picker, 'must register the composer multi-select')
   assert.equal(picker.options.id, 'dbstudio')
   assert.ok(status, 'must register the composer status strip')
+  const command = commandRegistrations.find((row) => row.name === 'db')
+  assert.ok(command, 'must register the /db slash command')
+  assert.equal(command.ui.kind, 'action')
+  assert.equal(typeof command.icon, 'function')
+  assert.equal(typeof command.label, 'function')
   assert.equal(styles.length, 1, 'the bundle injects its stylesheet once')
   for (const cleanup of cleanups) cleanup()
   assert.equal(styles[0].textContent.includes('.dshdb-page'), true)

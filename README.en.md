@@ -23,6 +23,7 @@ Connect to databases in [DeepSeek Harness](https://github.com/deepseek-ai/deepse
 - **Database tab in a conversation**: view and work with the selected databases without leaving the chat.
 - **Multi-select picker in the composer**: choose the databases this conversation may use.
 - **Talk to the data**: four agent tools for querying, creating tables and writing data.
+- **`/db` command**: type `/`, pick **Database** from the command list, and open the database panel.
 
 ## Install
 
